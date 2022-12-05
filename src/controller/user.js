@@ -1,6 +1,6 @@
 const RegisterModel=require("../models/RegisterModel")
 var jwt = require('jsonwebtoken');
-const {isValid,isValidPassword,isValidMail}=require("../validation/valid")
+const {isValid,isValidPassword,isValidMail,isValidImg}=require("../validation/valid")
 const { uploadFile } = require("../controller/aws/aws");
 // var cors = require('cors')
 
@@ -9,10 +9,10 @@ const { uploadFile } = require("../controller/aws/aws");
 const createUser = async function (req, res) {
     try {
         let data = JSON.parse(JSON.stringify(req.body));
-      
+      let files=req.files
         let email= data.email
         console.log(data)
-        let files=data.profileImage
+        
        console.log(files)
 
         if (files && files.length > 0) {
@@ -31,7 +31,7 @@ const createUser = async function (req, res) {
         //     return res.status(400).send({ msg: "Body should not be empty" })
         // }
         
-        if (!("FullName" in data) || !("email" in data) || !("password" in data)) return res.status(400).send({ msg: "FullName,email,password are required" })
+        if (!("FullName" in data) || !("email" in data) || !("pass" in data)) return res.status(400).send({ msg: "FullName,email,password are required" })
 
         if (!isValid(data.FullName)) return res.status(400).send({ status: false, msg: "The FUllName Attributes should not be empty" })
         if("passsword" in data){

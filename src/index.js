@@ -2,13 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route');
 const multer= require("multer")
-var cors = require('cors')
+
 const { default: mongoose } = require('mongoose');
 
 const app=express()
-app.use(cors({
-    origin:"*"
-}))
+// app.use(cors({
+//     origin:"*"
+// }))
 
 app.use(multer().any())    // TO EXPORT MULTI-FORM DATA 
 app.use(bodyParser.json());

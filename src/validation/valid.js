@@ -24,8 +24,12 @@ const isValidPassword = (pw) => {
     if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,15}$/.test(pw))
         return true
 }
+const isValidImg=(img)=>{
+    const reg = /image\/png|image\/jpeg|image\/jpg/;
+    return reg.test(img)
+}
 
 
 
 
-module.exports={isValid,isValidPassword,isValidMail,isValidName}
+module.exports={isValid,isValidPassword,isValidMail,isValidName,isValidImg}
