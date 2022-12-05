@@ -4,8 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
-
+To run this website follow give given step
+step 1   npm i
+step 2   cd src
+step 3   npm start 
+check crome browser tab
 ### `npm start`
 
 Runs the app in the development mode.\
