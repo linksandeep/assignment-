@@ -6,31 +6,11 @@ const Login=(props)=>{
     const [email,setEmail]=useState('');
     const [password, setPassword]=useState('');
 
-    const handleSubmit=async (e)=>{
-
-        e.preventDefault();
-         const res= await fetch("http://localhost:3000/Login",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-          email,password
-        })
-    
-       }) 
-      
-       setEmail("")
-       setPassword("")
-      
-        //  res()
-     }
-
 return (
     
     <div className="Login-Container">
         <h2>Login</h2>
-    <form className="Login-form" onSubmit={handleSubmit}>
+    <form className="Login-form" >
         <label htmlFor="email">Email</label>
         <input value={email} onChange={(e)=>setEmail(e.target.value)}type="email" placeholder="abc@gmail.com" id="email" name="email"></input>
         <label htmlFor="password">Password</label>
