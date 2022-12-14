@@ -10,7 +10,7 @@
 .Login-Container,.Login-form,.Register-form{
   display: flex;
  flex-direction: column;
- align-items: center;
+
 }
 
 .Login-Container{
@@ -20,7 +20,7 @@
 }
 
 label{
-  text-align: left;
+  
   padding: 0.25rem 0;
 }
 

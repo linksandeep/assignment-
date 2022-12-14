@@ -8,9 +8,46 @@ const Register= (props)=>{
     const [password, setPassword]=useState('');
     const [file,setFile]=useState('');
 
-// const handle=(e)=>{
-   
+
+
+//     const saveUser=async function(e){
+//         e.preventDefault();
+//        let data= {name,email,password};
+
+//          const res=await  fetch('http://localhost:3000/register',{
+//                     method:'POST',
+//                     headers:{
+//                     'Accept':'application/json',
+//                     'Content-Type':'application/json'
+//                 },
+//                 body:JSON.stringify({
+//                     name,email,password  
+//                 })
+              
+//     }) 
+    
+
 // }
+
+    function saveUser(e){
+        e.preventDefault();
+        console.log({name,email,password})
+        let data={name,email,password}
+        fetch('/register',{
+            method:'POST',
+            headers:{
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+        
+    }).then((result)=>{
+        result.json().then((resp)=>{
+        console.log("resp",resp)
+    })
+
+     })
+    }
 
 
  return (
@@ -18,7 +55,7 @@ const Register= (props)=>{
     
     <div className="Login-Container">
         <h2>Register</h2>
-    <form className="Register-form" >
+    <form className="Register-form" method="POST">
         <label htmlFor="name">Full name</label>
         <input value={name} onChange={(e)=>setName(e.target.value)} type="text" id="name" placeholder="full name" />
         <label htmlFor="email">Email</label>
@@ -27,7 +64,7 @@ const Register= (props)=>{
         <input value={password} onChange={(e)=>setPassword(e.target.value)}type="password" id="password" placeholder="Pass@123"/>
         <label htmlFor="uploadFile">profilePicture</label>
         <input value={file} onChange={(e)=>setFile(e.target.value)} type="file" name="profilePicture"></input>
-        <button type="submit">Register</button>
+        <button type="submit" onClick={saveUser}>Register</button>
     </form>
     <button className="link-btn" onClick={()=> props.onFormSwitch('Login')}>Already have an account? Login here.</button>
     </div>
